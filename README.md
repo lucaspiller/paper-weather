@@ -2,6 +2,8 @@
 
 Paper Weather turns old Kindle e-readers into an e-ink weather dashboard.
 
+![Screenshot](./screenshot.jpg)
+
 ⚠️ This project is WIP. It's not really in a state to be used by anyone else yet.
 
 ## Setup
