@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
@@ -6,12 +6,18 @@ COPY package.json .
 COPY yarn.lock .
 RUN yarn install
 
-FROM base AS builder
-
 COPY . .
 RUN yarn build
 
-FROM base AS runner
+FROM node:20-alpine
+
+ENV NODE_ENV production
+
+WORKDIR /app
+
+COPY package.json .
+COPY yarn.lock .
+RUN yarn install
 
 COPY --from=builder /app/build/ /app
 
