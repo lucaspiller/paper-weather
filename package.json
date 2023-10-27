@@ -4,7 +4,12 @@
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i ./src/global.css -o ./public/global.css",
+    "build:app": "tsc",
+    "build:static": "cp -r public build/public; cp -r views build/views",
+    "build": "rm -Rf build; yarn build:css && yarn build:app && yarn build:static",
+    "docker": "docker build -t paper-weather .",
     "dev": "nodemon src/server.ts",
+    "start": "cd build && node src/server.js",
     "lint": "eslint"
   },
   "dependencies": {
